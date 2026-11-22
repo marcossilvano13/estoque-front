@@ -9,14 +9,14 @@ const Layout = () => {
 
   return (
     <section className="app">
-      <aside className="sidebar">
-        <div className="logo">Stock<span>Flow</span></div>
+        <aside className="sidebar">
+        <div className="logo">Controle de Estoque</div>
         <nav className="navlist">
-          <NavLink to="/produtos" className="navitem"><b>▤</b> Produtos</NavLink>
-          <NavLink to="/ajuste" className="navitem"><b>⇄</b> Ajuste de estoque</NavLink>
-          <NavLink to="/movimentacoes" className="navitem"><b>◷</b> Movimentações</NavLink>
+          <NavLink to="/produtos" className="navitem">Produtos</NavLink>
+          <NavLink to="/ajuste" className="navitem">Ajuste de estoque</NavLink>
+          <NavLink to="/movimentacoes" className="navitem">Movimentações</NavLink>
         </nav>
-        <div className="sidebarfoot">Projeto acadêmico<br />SENAC</div>
+        <div className="sidebarfoot">Projeto Final - SENAC</div>
       </aside>
 
       <main className="main">
