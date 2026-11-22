@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 const Login = () => {
   const [email, setEmail] = useState('')
@@ -7,14 +8,21 @@ const Login = () => {
   const [erro, setErro] = useState('')
   const navigate = useNavigate()
 
-  const handleLogin = (event) => {
+  const handleLogin = async (event) => {
     event.preventDefault()
 
-    // Provisório: na Fase 8, esta conferência será feita pela API (JWT)
-    if (email === 'admin@estoque.com' && senha === '123456') {
+    try {
+      const response = await axios.post('http://localhost:8080/usuarios/login', {
+        email,
+        senha
+      })
+
+      // Guarda o token no navegador
+      localStorage.setItem('token', response.data.token)
       navigate('/produtos')
-    } else {
-      setErro('E-mail ou senha inválidos!')
+    } catch (error) {
+      console.error('Erro no login:', error)
+      setErro(error.response ? error.response.data.mensagem : 'Erro ao conectar com o servidor')
     }
   }
 

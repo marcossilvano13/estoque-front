@@ -3,7 +3,13 @@ import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 const Layout = () => {
   const navigate = useNavigate()
 
+  const token = localStorage.getItem('token')
+  if (!token) {
+    return <Navigate to="/login" />
+  }
+
   const handleSair = () => {
+    localStorage.removeItem('token')
     navigate('/login')
   }
 
